@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t_polls_client/resources/widgets/stars_widget.dart';
+import 'package:t_polls_client/resources/widgets/answer_widget.dart';
 
 class PollPage extends StatefulWidget {
   PollPage({super.key});
@@ -22,23 +22,39 @@ class PollPage extends StatefulWidget {
 class _PollPageState extends State<PollPage> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(
-          16.0,
-        ),
-        child: Column(
-          children: [
-            Text(widget.poll["title"]),
-            Expanded(
-              child: ListView.builder(
-                itemCount: widget.poll["variants"].length,
-                itemBuilder: (context, index) => StarWidget(),
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Container(
+            width: width > 800 ? 800 : width,
+            decoration: const BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
               ),
             ),
-          ],
+            child: Column(
+              children: [
+                Text(widget.poll["title"]),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: widget.poll["variants"].length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: AnswerWidget(
+                        num: index + 1,
+                        text: widget.poll["variants"][index],
+                      ),
+                    ),
+                    shrinkWrap: true,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

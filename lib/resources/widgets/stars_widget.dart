@@ -13,6 +13,7 @@ class _StarWidgetState extends State<StarWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: List.generate(
         5,
         (index) => InkWell(
