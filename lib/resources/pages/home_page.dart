@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t_polls_client/resources/widgets/poll_card_widget.dart';
+import 'package:t_polls_client/tools/adaptive_size.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -18,11 +19,16 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const Text("Доступные ТОПросы:"),
+              Text(
+                "Доступные ТОПросы:",
+                style: TextStyle(
+                  fontSize: AdaptiveSize.getCaptionFontSize(width),
+                ),
+              ),
               GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 3,
-                  crossAxisCount: width > 500 ? 2 : 1,
+                  childAspectRatio: AdaptiveSize.getAspectRatio(width),
+                  crossAxisCount: AdaptiveSize.getGridCount(width),
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 8,
                 ),
@@ -37,11 +43,16 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(
                 height: 20,
               ),
-              const Text("Завершенные ТОПросы:"),
+              Text(
+                "Завершенные ТОПросы:",
+                style: TextStyle(
+                  fontSize: AdaptiveSize.getCaptionFontSize(width),
+                ),
+              ),
               GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 3,
-                  crossAxisCount: width > 500 ? 2 : 1,
+                  childAspectRatio: AdaptiveSize.getAspectRatio(width),
+                  crossAxisCount: AdaptiveSize.getGridCount(width),
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 8,
                 ),

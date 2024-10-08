@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t_polls_client/resources/widgets/answer_widget.dart';
+import 'package:t_polls_client/tools/adaptive_size.dart';
 
 class PollPage extends StatefulWidget {
   PollPage({super.key});
@@ -38,12 +39,24 @@ class _PollPageState extends State<PollPage> {
             ),
             child: Column(
               children: [
-                Text(widget.poll["title"]),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16.0,
+                  ),
+                  child: Text(
+                    widget.poll["title"],
+                    style: TextStyle(
+                      fontSize: AdaptiveSize.getCaptionFontSize(width),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: ListView.builder(
                     itemCount: widget.poll["variants"].length,
                     itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 10.0),
                       child: AnswerWidget(
                         num: index + 1,
                         text: widget.poll["variants"][index],
