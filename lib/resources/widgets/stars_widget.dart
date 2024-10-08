@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_polls_client/tools/adaptive_size.dart';
 
 class StarWidget extends StatefulWidget {
   const StarWidget({super.key});
@@ -36,8 +37,10 @@ class Star extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return enabled
-        ? const Icon(Icons.star, color: Colors.yellow)
-        : const Icon(Icons.star_border, color: Colors.grey);
+        ? Icon(Icons.star, color: Colors.yellow, size: AdaptiveSize.getStarSize(width),)
+        : Icon(Icons.star_border, color: Colors.grey, size: AdaptiveSize.getStarSize(width));
   }
 }

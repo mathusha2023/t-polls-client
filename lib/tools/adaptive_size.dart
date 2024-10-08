@@ -23,6 +23,12 @@ class AdaptiveSize {
     return w;
   }
 
+  static double getStarSize(double width) {
+    double w = width / 20;
+    if (w > 44) w = 44;
+    return w;
+  }
+
   static double getMainFontSize(double width) {
     double w = width / 34;
     if (w > 24) w = 22;

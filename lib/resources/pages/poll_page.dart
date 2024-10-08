@@ -37,35 +37,50 @@ class _PollPageState extends State<PollPage> {
                 Radius.circular(20),
               ),
             ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16.0,
-                  ),
-                  child: Text(
-                    widget.poll["title"],
-                    style: TextStyle(
-                      fontSize: AdaptiveSize.getCaptionFontSize(width),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: widget.poll["variants"].length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 10.0),
-                      child: AnswerWidget(
-                        num: index + 1,
-                        text: widget.poll["variants"][index],
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: width > 600
+                        ? const EdgeInsets.symmetric(
+                            vertical: 16.0,
+                          )
+                        : const EdgeInsets.symmetric(
+                            vertical: 0.0,
+                          ),
+                    child: Text(
+                      widget.poll["title"],
+                      style: TextStyle(
+                        fontSize: AdaptiveSize.getCaptionFontSize(width),
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    shrinkWrap: true,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.poll["variants"].length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: AnswerWidget(
+                          num: index + 1,
+                          text: widget.poll["variants"][index],
+                        ),
+                      ),
+                      shrinkWrap: true,
+                    ),
+                  ),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Отправить!",
+                      style: TextStyle(
+                        fontSize: AdaptiveSize.getMainFontSize(width),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
