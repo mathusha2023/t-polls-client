@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:t_polls_client/resources/pages/home_page.dart";
+import 'package:t_polls_client/resources/themes/dark_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: darkTheme,
       home: const MyHomePage(),
     );
   }
 }
-

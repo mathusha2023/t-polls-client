@@ -8,11 +8,34 @@ class PollPage extends StatefulWidget {
   final Map poll = {
     "title": "AJSJHDHA",
     "variants": [
-      "1VARIANT",
-      "2VARIANT",
-      "3VARIANT",
-      "4VARIANT",
-      "5VARIANT",
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
+      {
+        "title": "Variant1",
+        "answers": ["sasa", "ssksksk", "akskssn", "lsksks", "skks"],
+      },
     ]
   };
 
@@ -24,6 +47,7 @@ class _PollPageState extends State<PollPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    ThemeData theme = Theme.of(context);
 
     return Scaffold(
       body: Padding(
@@ -31,9 +55,9 @@ class _PollPageState extends State<PollPage> {
         child: Center(
           child: Container(
             width: width > 800 ? 800 : width,
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.all(
+            decoration: BoxDecoration(
+              color: theme.cardColor,
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
             ),
@@ -64,7 +88,8 @@ class _PollPageState extends State<PollPage> {
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: AnswerWidget(
                           num: index + 1,
-                          text: widget.poll["variants"][index],
+                          text: widget.poll["variants"][index]["title"],
+                          variants: widget.poll["variants"][index]["variants"],
                         ),
                       ),
                       shrinkWrap: true,
